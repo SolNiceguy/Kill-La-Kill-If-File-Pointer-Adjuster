@@ -12,6 +12,6 @@ script_character file functionality has been disabled since it's still a bit bug
 
 ## Instructions
 1. Drag file to "File Path" window 
-3. "Middle Offset" is where the pointer code ends and the bottom code begins. Will automatically fill in the default value for the file if left empty.  
-2. Enter code into "Pointer Code" and "Bottom Code" windows.  
+3. "Middle Offset" is the offset where the pointer code ends and the bottom code begins. Will automatically fill in the default value for the file if left empty.  
+2. Enter hex code into "Pointer Code" and "Bottom Code" windows.  
 3. Apply
