@@ -79,6 +79,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 171);
+            this.label2.Location = new System.Drawing.Point(52, 171);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 3;
@@ -94,8 +95,7 @@
             // 
             // originalMiddleOffset
             // 
-            this.originalMiddleOffset.Enabled = false;
-            this.originalMiddleOffset.Location = new System.Drawing.Point(161, 313);
+            this.originalMiddleOffset.Location = new System.Drawing.Point(169, 312);
             this.originalMiddleOffset.Name = "originalMiddleOffset";
             this.originalMiddleOffset.Size = new System.Drawing.Size(121, 20);
             this.originalMiddleOffset.TabIndex = 4;
@@ -103,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 313);
+            this.label3.Location = new System.Drawing.Point(36, 317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 5;
@@ -140,7 +140,7 @@
             // modifiedPath
             // 
             this.modifiedPath.AllowDrop = true;
-            this.modifiedPath.Location = new System.Drawing.Point(161, 148);
+            this.modifiedPath.Location = new System.Drawing.Point(169, 147);
             this.modifiedPath.Multiline = true;
             this.modifiedPath.Name = "modifiedPath";
             this.modifiedPath.Size = new System.Drawing.Size(218, 55);
@@ -195,7 +195,7 @@
             // regularCode
             // 
             this.regularCode.AllowDrop = true;
-            this.regularCode.Location = new System.Drawing.Point(161, 362);
+            this.regularCode.Location = new System.Drawing.Point(169, 361);
             this.regularCode.Multiline = true;
             this.regularCode.Name = "regularCode";
             this.regularCode.Size = new System.Drawing.Size(218, 55);
@@ -204,7 +204,7 @@
             // pointerCode
             // 
             this.pointerCode.AllowDrop = true;
-            this.pointerCode.Location = new System.Drawing.Point(161, 238);
+            this.pointerCode.Location = new System.Drawing.Point(169, 237);
             this.pointerCode.Multiline = true;
             this.pointerCode.Name = "pointerCode";
             this.pointerCode.Size = new System.Drawing.Size(218, 55);
@@ -213,7 +213,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 373);
+            this.label8.Location = new System.Drawing.Point(43, 373);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 13);
             this.label8.TabIndex = 17;
@@ -222,7 +222,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(48, 249);
+            this.label9.Location = new System.Drawing.Point(43, 249);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 16;
@@ -314,7 +314,7 @@
             // injectLocation
             // 
             this.injectLocation.Enabled = false;
-            this.injectLocation.Location = new System.Drawing.Point(161, 431);
+            this.injectLocation.Location = new System.Drawing.Point(169, 430);
             this.injectLocation.Name = "injectLocation";
             this.injectLocation.Size = new System.Drawing.Size(121, 20);
             this.injectLocation.TabIndex = 31;
@@ -355,7 +355,7 @@
             // 
             this.overwrite1.AutoSize = true;
             this.overwrite1.Enabled = false;
-            this.overwrite1.Location = new System.Drawing.Point(161, 460);
+            this.overwrite1.Location = new System.Drawing.Point(169, 459);
             this.overwrite1.Name = "overwrite1";
             this.overwrite1.Size = new System.Drawing.Size(71, 17);
             this.overwrite1.TabIndex = 36;
@@ -433,7 +433,7 @@
             // 
             this.patchPath.AllowDrop = true;
             this.patchPath.Enabled = false;
-            this.patchPath.Location = new System.Drawing.Point(161, 499);
+            this.patchPath.Location = new System.Drawing.Point(169, 498);
             this.patchPath.Multiline = true;
             this.patchPath.Name = "patchPath";
             this.patchPath.Size = new System.Drawing.Size(218, 55);
@@ -580,17 +580,27 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(52, 184);
+            this.label21.Location = new System.Drawing.Point(38, 184);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 13);
             this.label21.TabIndex = 60;
             this.label21.Text = "(Drag file here)";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(4, 330);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(158, 13);
+            this.label22.TabIndex = 61;
+            this.label22.Text = "(leave empty for unchanged file)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 778);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -685,6 +695,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }
 
