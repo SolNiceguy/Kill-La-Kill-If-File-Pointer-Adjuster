@@ -1,0 +1,10 @@
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\bin\Debug\PointerAdjuster.exe.config
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\bin\Debug\PointerAdjuster.exe
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\bin\Debug\PointerAdjuster.pdb
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.csprojAssemblyReference.cache
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.Form1.resources
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.Properties.Resources.resources
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.csproj.GenerateResource.cache
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.csproj.CoreCompileInputs.cache
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.exe
+K:\A_O\PointerAdjuster\PointerAdjuster\PointerAdjuster\obj\Debug\PointerAdjuster.pdb
