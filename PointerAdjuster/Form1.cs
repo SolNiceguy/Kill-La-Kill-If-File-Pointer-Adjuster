@@ -275,6 +275,8 @@ namespace PointerAdjuster
 
             modifiedPath.Text = (s[0]);
 
+            GetFileInfo(modifiedPath.Text);
+
             //GetFileInfo();
             ////todo next make all this stuff run when button pressed
             //string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
