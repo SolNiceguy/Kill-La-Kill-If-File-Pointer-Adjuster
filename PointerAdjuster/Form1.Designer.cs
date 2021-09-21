@@ -640,9 +640,9 @@
             this.error6.AutoSize = true;
             this.error6.Location = new System.Drawing.Point(618, 592);
             this.error6.Name = "error6";
-            this.error6.Size = new System.Drawing.Size(89, 13);
+            this.error6.Size = new System.Drawing.Size(34, 13);
             this.error6.TabIndex = 66;
-            this.error6.Text = "Entry Hex Length";
+            this.error6.Text = "error6";
             // 
             // Form1
             // 
