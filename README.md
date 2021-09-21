@@ -1,7 +1,7 @@
 
 # Kill-La-Kill-If-File-Pointer-Adjuster
   
-[PointerAdjuster.zip](https://github.com/SolNiceguy/Kill-La-Kill-If-File-Pointer-Adjuster/files/7003080/PointerAdjuster.zip)  
+[PointerAdjuster.zip](https://github.com/SolNiceguy/Kill-La-Kill-If-File-Pointer-Adjuster/blob/90fc6f6d3f487503411f03989a9d6b6edff943bb/PointerAdjuster/bin/Debug/PointerAdjuster.zip)  
 Form1.cs has the all the code.  
 
 
