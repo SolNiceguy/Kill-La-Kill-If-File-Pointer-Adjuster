@@ -82,8 +82,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.entryLength = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.entriesAdded = new System.Windows.Forms.TextBox();
             this.error5 = new System.Windows.Forms.Label();
             this.error0 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -465,7 +463,6 @@
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 48;
             this.label17.Text = "Middle Offset";
-            this.label17.Visible = false;
             // 
             // folderDirectory
             // 
@@ -496,7 +493,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(262, 495);
+            this.button2.Location = new System.Drawing.Point(257, 448);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(203, 51);
             this.button2.TabIndex = 52;
@@ -507,7 +504,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(254, 472);
+            this.label19.Location = new System.Drawing.Point(249, 425);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(68, 13);
             this.label19.TabIndex = 54;
@@ -515,7 +512,7 @@
             // 
             // timesToAdd
             // 
-            this.timesToAdd.Location = new System.Drawing.Point(344, 469);
+            this.timesToAdd.Location = new System.Drawing.Point(339, 422);
             this.timesToAdd.Name = "timesToAdd";
             this.timesToAdd.Size = new System.Drawing.Size(121, 20);
             this.timesToAdd.TabIndex = 53;
@@ -524,19 +521,18 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(7, 514);
+            this.label20.Location = new System.Drawing.Point(586, 578);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(122, 13);
+            this.label20.Size = new System.Drawing.Size(124, 13);
             this.label20.TabIndex = 56;
-            this.label20.Text = "How many added in one";
+            this.label20.Text = "How many entries added";
             // 
             // howManyInOneAdd
             // 
-            this.howManyInOneAdd.Location = new System.Drawing.Point(135, 511);
+            this.howManyInOneAdd.Location = new System.Drawing.Point(714, 575);
             this.howManyInOneAdd.Name = "howManyInOneAdd";
             this.howManyInOneAdd.Size = new System.Drawing.Size(121, 20);
             this.howManyInOneAdd.TabIndex = 55;
-            this.howManyInOneAdd.Text = "20";
             // 
             // button3
             // 
@@ -551,9 +547,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.isScriptCharacterFile);
-            this.panel1.Controls.Add(this.howManyInOneAdd);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.timesToAdd);
@@ -570,7 +564,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(393, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(468, 565);
+            this.panel1.Size = new System.Drawing.Size(468, 508);
             this.panel1.TabIndex = 58;
             this.panel1.Visible = false;
             // 
@@ -605,7 +599,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(603, 602);
+            this.label23.Location = new System.Drawing.Point(618, 616);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(89, 13);
             this.label23.TabIndex = 62;
@@ -614,30 +608,11 @@
             // entryLength
             // 
             this.entryLength.AutoSize = true;
-            this.entryLength.Location = new System.Drawing.Point(704, 602);
+            this.entryLength.Location = new System.Drawing.Point(719, 616);
             this.entryLength.Name = "entryLength";
             this.entryLength.Size = new System.Drawing.Size(58, 13);
             this.entryLength.TabIndex = 63;
             this.entryLength.Text = "-----------------";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(603, 632);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(73, 13);
-            this.label24.TabIndex = 59;
-            this.label24.Text = "Entries Added";
-            this.label24.Visible = false;
-            // 
-            // entriesAdded
-            // 
-            this.entriesAdded.Location = new System.Drawing.Point(693, 629);
-            this.entriesAdded.Name = "entriesAdded";
-            this.entriesAdded.Size = new System.Drawing.Size(121, 20);
-            this.entriesAdded.TabIndex = 58;
-            this.entriesAdded.Text = "0";
-            this.entriesAdded.Visible = false;
             // 
             // error5
             // 
@@ -663,9 +638,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 778);
             this.Controls.Add(this.error0);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.error5);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.entriesAdded);
+            this.Controls.Add(this.howManyInOneAdd);
             this.Controls.Add(this.entryLength);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
@@ -766,8 +741,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label entryLength;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox entriesAdded;
         private System.Windows.Forms.Label error5;
         private System.Windows.Forms.Label error0;
     }
