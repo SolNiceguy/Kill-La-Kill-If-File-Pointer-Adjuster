@@ -84,6 +84,7 @@
             this.entryLength = new System.Windows.Forms.Label();
             this.error5 = new System.Windows.Forms.Label();
             this.error0 = new System.Windows.Forms.Label();
+            this.error6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -521,7 +522,8 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(586, 578);
+            this.label20.Enabled = false;
+            this.label20.Location = new System.Drawing.Point(583, 557);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(124, 13);
             this.label20.TabIndex = 56;
@@ -529,7 +531,8 @@
             // 
             // howManyInOneAdd
             // 
-            this.howManyInOneAdd.Location = new System.Drawing.Point(714, 575);
+            this.howManyInOneAdd.Enabled = false;
+            this.howManyInOneAdd.Location = new System.Drawing.Point(711, 554);
             this.howManyInOneAdd.Name = "howManyInOneAdd";
             this.howManyInOneAdd.Size = new System.Drawing.Size(121, 20);
             this.howManyInOneAdd.TabIndex = 55;
@@ -632,11 +635,21 @@
             this.error0.TabIndex = 65;
             this.error0.Text = "error0";
             // 
+            // error6
+            // 
+            this.error6.AutoSize = true;
+            this.error6.Location = new System.Drawing.Point(618, 592);
+            this.error6.Name = "error6";
+            this.error6.Size = new System.Drawing.Size(89, 13);
+            this.error6.TabIndex = 66;
+            this.error6.Text = "Entry Hex Length";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 778);
+            this.Controls.Add(this.error6);
             this.Controls.Add(this.error0);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.error5);
@@ -743,6 +756,7 @@
         private System.Windows.Forms.Label entryLength;
         private System.Windows.Forms.Label error5;
         private System.Windows.Forms.Label error0;
+        private System.Windows.Forms.Label error6;
     }
 }
 

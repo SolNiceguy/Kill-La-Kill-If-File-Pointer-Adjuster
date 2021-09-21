@@ -18,6 +18,8 @@ namespace PointerAdjuster
     public partial class Form1 : Form
     {
         string filePath = "";
+        byte[] data;
+        //FileStream f;
 
         int test = 0;
 
@@ -176,6 +178,7 @@ namespace PointerAdjuster
 
             error0.Text = "";
             error5.Text = "";
+            error6.Text = "";
 
             //this.originalPath.DragDrop += new
             //System.Windows.Forms.DragEventHandler(this.textBox3_DragDrop);
@@ -637,8 +640,8 @@ namespace PointerAdjuster
                 int toChangeLength = Convert.ToInt32(new System.IO.FileInfo(filePath).Length);
 
 
-
-                byte[] data = new byte[toChangeLength];
+                data = new byte[toChangeLength];
+                //byte[] data = new byte[toChangeLength];
 
 
                 fs.Read(data, 0, toChangeLength);
@@ -683,7 +686,7 @@ namespace PointerAdjuster
                     originalMiddleOffset.Text += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
                     //bottomStart += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
 
-                    entryLength.Text = IntToHex((HexToInt(originalMiddleOffset.Text) - HexToInt(fileStart))/HexToInt(entryTotal));
+                    entryLength.Text = IntToHex((HexToInt(originalMiddleOffset.Text) - HexToInt(fileStart)) / HexToInt(entryTotal));
 
                 }
 
@@ -701,6 +704,10 @@ namespace PointerAdjuster
 
                 originalSecondPartStart.Text = IntToHex(originalLength);
                 modifiedSecondPartStart = IntToHex(HexToInt(originalSecondPartStart.Text) + pointerCode.Text.Length);
+
+
+
+
 
 
 
@@ -890,11 +897,11 @@ namespace PointerAdjuster
                 error4.Text = "Enter usable file, or modified offset";
             }
 
-            if (howManyInOneAdd.Text == "")
-            {
-                error5.Text = "Enter number of entries added";
-              
-            }
+            //if (howManyInOneAdd.Text == "")
+            //{
+            //    error5.Text = "Enter number of entries added";
+
+            //}
 
             if (pointerCode.Text == "" && pointerCode2.Text == "")
             {
@@ -925,8 +932,13 @@ namespace PointerAdjuster
             //{
             //    error4.Text = "Enter usable file, or modified offset";
             //}
-
-
+            
+            howManyInOneAdd.Text = IntToHex(( pointerCode.Text.Length/2)/ HexToInt( entryLength.Text));
+            if (( pointerCode.Text.Length/2) % HexToInt(entryLength.Text) != 0)
+            {
+                error6.Text = "new pointer code must be of hex length" + entryLength.Text;
+            }
+            //error6.Text = IntToHex(pointerCode.Text.Length / 2) + " " + entryLength.Text;
 
             if (isScriptCharacterFile.Checked)
             {
@@ -1082,7 +1094,8 @@ namespace PointerAdjuster
 
 
             //label17.Text = "before errors";
-            if (error1.Text.Length + error2.Text.Length + error3.Text.Length + error4.Text.Length + label10.Text.Length + label11.Text.Length == 0)
+            if (error1.Text.Length + error2.Text.Length + error3.Text.Length + error4.Text.Length + label10.Text.Length + label11.Text.Length == 0
+                +error0.Text.Length +error5.Text.Length + error6.Text.Length )
             //if (originalPath.Text != "" &&
             //    modifiedPath.Text != "" &&
             //    originalMiddleOffset.Text != "" &&
@@ -1378,6 +1391,8 @@ namespace PointerAdjuster
         {
             originalMiddleOffset.Text = "";
             entryTotal = "0";
+            //data.Initialize();
+            //f.;
         }
 
         private void ClearErrors()
@@ -1388,9 +1403,11 @@ namespace PointerAdjuster
             error4.Text = "";
             label10.Text = "";
             label11.Text = "";
+            label17.Text = "";
 
             error0.Text = "";
             error5.Text = "";
+            error6.Text = "";
 
         }
 
@@ -2717,84 +2734,14 @@ namespace PointerAdjuster
             //todo check if needed for other file types? check here if not working
             //changes file size after insertion
 
-            
+
 
             if (modifiedPath.Text.Contains(".mot"))
             {
 
-                //ChangeEntryTotal("34", data, fs);
+                ChangeEntryTotal("34", fs);
                 //todo for mot only?
-                int currentOffset = HexToInt("34");
-                string sizeBlock = "";
-                byte[] baseModelBoneNumberBytes = new byte[4];
 
-                for (int i = 0; i < 4; i++)
-                {
-
-
-                    //fs.Position += i;
-
-                    sizeBlock += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
-                    //textBoxMOTDataTop.Text += (IntToHex(data[currentOffset + i])).PadLeft(2, '0');
-                    //newByte += (IntToHex(data[i])).PadLeft(2, '0');
-                    baseModelBoneNumberBytes[i] = data[currentOffset + i];
-
-                }
-                int baseModelBoneNumber = HexToInt(sizeBlock);
-
-
-
-                //string newBoneBig = (sizeBlock + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
-                string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text) * Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)*Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
-
-
-
-
-
-                //label5.Text = newValueBig + " " + bigGroup + " " + change;
-
-
-                //return newValueBig;
-                char[] bs = newBoneBig.ToCharArray();
-
-
-                char[] newBoneLittleChar = { bs[6], bs[7], bs[4], bs[5], bs[2], bs[3], bs[0], bs[1] };
-
-
-                //if (i == 2 * HexToInt(fileStart) / 8)
-                //{
-                //    label17.Text = newValueBig;
-                //}
-
-
-
-                byte[] newBoneLittleBytes = new byte[newBoneLittleChar.Length / 2];
-                //label17.Text = newValueLittleChar[3].ToString();
-
-                for (int k = 0; k < newBoneLittleBytes.Length; k++)
-                {
-                    //label17.Text += k.ToString() + "p";
-                    newBoneLittleBytes[k] = Convert.ToByte(HexToInt(newBoneLittleChar[2 * k].ToString() + newBoneLittleChar[2 * k + 1].ToString()));
-                    //newValueLittleBytes[k] = Convert.ToByte(HexToInt(newValueLittleChar[2 * k].ToString()) + HexToInt(newValueLittleChar[2 * k + 1].ToString()));
-                    //label17.Text += k.ToString() + "p";
-                }
-                //string newValueLittle = s[6].ToString() + s[7].ToString() + s[4].ToString() + s[5].ToString() +
-                //s[2].ToString() + s[3].ToString() + s[0].ToString() + s[1].ToString();
-
-
-
-
-
-
-                currentOffset = HexToInt("34");
-                for (int i = 0; i < 4; i++)
-                {
-                    fs.Position = currentOffset + i;
-                    fs.WriteByte(newBoneLittleBytes[i]);
-
-                }
 
 
 
@@ -2802,81 +2749,10 @@ namespace PointerAdjuster
 
             else
             {
-                //ChangeEntryTotal("08", data, fs);
+                ChangeEntryTotal("08", fs);
 
 
 
-                int currentOffset = HexToInt("8");
-                string sizeBlock = "";
-                byte[] baseModelBoneNumberBytes = new byte[4];
-
-                for (int i = 0; i < 4; i++)
-                {
-
-
-                    //fs.Position += i;
-
-                    sizeBlock += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
-                    //textBoxMOTDataTop.Text += (IntToHex(data[currentOffset + i])).PadLeft(2, '0');
-                    //newByte += (IntToHex(data[i])).PadLeft(2, '0');
-                    baseModelBoneNumberBytes[i] = data[currentOffset + i];
-
-                }
-                int baseModelBoneNumber = HexToInt(sizeBlock);
-
-
-
-                //string newBoneBig = (sizeBlock + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
-                string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text) * Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)*Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
-
-
-
-
-
-                //label5.Text = newValueBig + " " + bigGroup + " " + change;
-
-
-                //return newValueBig;
-                char[] bs = newBoneBig.ToCharArray();
-
-
-                char[] newBoneLittleChar = { bs[6], bs[7], bs[4], bs[5], bs[2], bs[3], bs[0], bs[1] };
-
-
-                //if (i == 2 * HexToInt(fileStart) / 8)
-                //{
-                //    label17.Text = newValueBig;
-                //}
-
-
-
-                byte[] newBoneLittleBytes = new byte[newBoneLittleChar.Length / 2];
-                //label17.Text = newValueLittleChar[3].ToString();
-
-                for (int k = 0; k < newBoneLittleBytes.Length; k++)
-                {
-                    //label17.Text += k.ToString() + "p";
-                    newBoneLittleBytes[k] = Convert.ToByte(HexToInt(newBoneLittleChar[2 * k].ToString() + newBoneLittleChar[2 * k + 1].ToString()));
-                    //newValueLittleBytes[k] = Convert.ToByte(HexToInt(newValueLittleChar[2 * k].ToString()) + HexToInt(newValueLittleChar[2 * k + 1].ToString()));
-                    //label17.Text += k.ToString() + "p";
-                }
-                //string newValueLittle = s[6].ToString() + s[7].ToString() + s[4].ToString() + s[5].ToString() +
-                //s[2].ToString() + s[3].ToString() + s[0].ToString() + s[1].ToString();
-
-
-
-
-
-
-                currentOffset = HexToInt("8");
-                for (int i = 0; i < 4; i++)
-                {
-                    fs.Position = currentOffset + i;
-                    fs.WriteByte(newBoneLittleBytes[i]);
-
-                }
 
 
             }
@@ -2896,80 +2772,86 @@ namespace PointerAdjuster
         }
 
 
-        private void ChangeEntryTotal(string entryTotalLocation, byte[] data, FileStream fs)
+        private void ChangeEntryTotal(string entryTotalLocation, FileStream fs)
         {
             //todo for mot only?
-                int currentOffset = HexToInt(entryTotalLocation);
-                //int currentOffset = HexToInt("34");
-                string sizeBlock = "";
-                byte[] baseModelBoneNumberBytes = new byte[4];
+            int currentOffset = HexToInt(entryTotalLocation);
+            //int currentOffset = HexToInt("34");
+            string sizeBlock = "";
+            byte[] baseModelBoneNumberBytes = new byte[4];
 
-                for (int i = 0; i < 4; i++)
-                {
-
-
-                    //fs.Position += i;
-
-                    sizeBlock += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
-                    //textBoxMOTDataTop.Text += (IntToHex(data[currentOffset + i])).PadLeft(2, '0');
-                    //newByte += (IntToHex(data[i])).PadLeft(2, '0');
-                    baseModelBoneNumberBytes[i] = data[currentOffset + i];
-
-                }
-                int baseModelBoneNumber = HexToInt(sizeBlock);
+            for (int i = 0; i < 4; i++)
+            {
 
 
+                //fs.Position += i;
 
-                //string newBoneBig = (sizeBlock + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
-                string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text) * Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)*Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
-                //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
+                sizeBlock += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
+                //textBoxMOTDataTop.Text += (IntToHex(data[currentOffset + i])).PadLeft(2, '0');
+                //newByte += (IntToHex(data[i])).PadLeft(2, '0');
+                baseModelBoneNumberBytes[i] = data[currentOffset + i];
 
+            }
+            int baseModelBoneNumber = HexToInt(sizeBlock);
 
+            //howManyInOneAdd.Text = IntToHex( pointerCode.Text.Length/2) + " " + IntToHex( HexToInt( entryLength.Text));
+            //howManyInOneAdd.Text = IntToHex(( pointerCode.Text.Length/2)/ HexToInt( entryLength.Text));
+            //if (( pointerCode.Text.Length/2) % HexToInt(entryLength.Text) != 0)
+            //{
 
+            //}
+           
 
-
-                //label5.Text = newValueBig + " " + bigGroup + " " + change;
-
-
-                //return newValueBig;
-                char[] bs = newBoneBig.ToCharArray();
-
-
-                char[] newBoneLittleChar = { bs[6], bs[7], bs[4], bs[5], bs[2], bs[3], bs[0], bs[1] };
-
-
-                //if (i == 2 * HexToInt(fileStart) / 8)
-                //{
-                //    label17.Text = newValueBig;
-                //}
-
-
-
-                byte[] newBoneLittleBytes = new byte[newBoneLittleChar.Length / 2];
-                //label17.Text = newValueLittleChar[3].ToString();
-
-                for (int k = 0; k < newBoneLittleBytes.Length; k++)
-                {
-                    //label17.Text += k.ToString() + "p";
-                    newBoneLittleBytes[k] = Convert.ToByte(HexToInt(newBoneLittleChar[2 * k].ToString() + newBoneLittleChar[2 * k + 1].ToString()));
-                    //newValueLittleBytes[k] = Convert.ToByte(HexToInt(newValueLittleChar[2 * k].ToString()) + HexToInt(newValueLittleChar[2 * k + 1].ToString()));
-                    //label17.Text += k.ToString() + "p";
-                }
-                //string newValueLittle = s[6].ToString() + s[7].ToString() + s[4].ToString() + s[5].ToString() +
-                //s[2].ToString() + s[3].ToString() + s[0].ToString() + s[1].ToString();
+            //string newBoneBig = (sizeBlock + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
+            string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text) * Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
+            //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)*Convert.ToInt32(howManyInOneAdd.Text)).PadLeft(8, '0');
+            //string newBoneBig = IntToHex(HexToInt(sizeBlock) + Convert.ToInt32(timesToAdd.Text)).PadLeft(8, '0');
 
 
 
 
-                currentOffset = HexToInt("entryTotalLocation");
-                //currentOffset = HexToInt("34");
-                for (int i = 0; i < 4; i++)
-                {
-                    fs.Position = currentOffset + i;
-                    fs.WriteByte(newBoneLittleBytes[i]);
 
-                }
+            //label5.Text = newValueBig + " " + bigGroup + " " + change;
+
+
+            //return newValueBig;
+            char[] bs = newBoneBig.ToCharArray();
+
+
+            char[] newBoneLittleChar = { bs[6], bs[7], bs[4], bs[5], bs[2], bs[3], bs[0], bs[1] };
+
+
+            //if (i == 2 * HexToInt(fileStart) / 8)
+            //{
+            //    label17.Text = newValueBig;
+            //}
+
+
+
+            byte[] newBoneLittleBytes = new byte[newBoneLittleChar.Length / 2];
+            //label17.Text = newValueLittleChar[3].ToString();
+
+            for (int k = 0; k < newBoneLittleBytes.Length; k++)
+            {
+                //label17.Text += k.ToString() + "p";
+                newBoneLittleBytes[k] = Convert.ToByte(HexToInt(newBoneLittleChar[2 * k].ToString() + newBoneLittleChar[2 * k + 1].ToString()));
+                //newValueLittleBytes[k] = Convert.ToByte(HexToInt(newValueLittleChar[2 * k].ToString()) + HexToInt(newValueLittleChar[2 * k + 1].ToString()));
+                //label17.Text += k.ToString() + "p";
+            }
+            //string newValueLittle = s[6].ToString() + s[7].ToString() + s[4].ToString() + s[5].ToString() +
+            //s[2].ToString() + s[3].ToString() + s[0].ToString() + s[1].ToString();
+
+
+
+
+            currentOffset = HexToInt(entryTotalLocation);
+            //currentOffset = HexToInt("34");
+            for (int i = 0; i < 4; i++)
+            {
+                fs.Position = currentOffset + i;
+                fs.WriteByte(newBoneLittleBytes[i]);
+
+            }
 
 
 
@@ -3218,7 +3100,7 @@ namespace PointerAdjuster
                         string pointerCodeLittle = "";
                         pointerCodeLittle += IntToHex(HexToInt(littlePlace) + (HexToInt("00000068") * (i / 6))).PadLeft(8, '0');
 
-                        pointerCodePlaceholder += pointerCodeLittle[6].ToString() + pointerCodeLittle[7] + pointerCodeLittle[4] + pointerCodeLittle[5] + 
+                        pointerCodePlaceholder += pointerCodeLittle[6].ToString() + pointerCodeLittle[7] + pointerCodeLittle[4] + pointerCodeLittle[5] +
                                                  pointerCodeLittle[2] + pointerCodeLittle[3] + pointerCodeLittle[0] + pointerCodeLittle[1];
 
                         //pointerCodePlaceholder += IntToHex(HexToInt(formattedArray[i]) + (HexToInt("68000000") * (i / 6))).PadLeft(8, '0');
@@ -3265,7 +3147,7 @@ namespace PointerAdjuster
                 filePath = singleFilePath;
 
                 ClearErrors();
-                
+
                 label17.Text += "started...";
                 //todo get rid of this stuff???
                 if (isScriptCharacterFile.Checked)
