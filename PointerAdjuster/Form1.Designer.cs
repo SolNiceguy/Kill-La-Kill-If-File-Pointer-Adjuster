@@ -80,6 +80,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.entryLength = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.entriesAdded = new System.Windows.Forms.TextBox();
+            this.error5 = new System.Windows.Forms.Label();
+            this.error0 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -459,6 +465,7 @@
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 48;
             this.label17.Text = "Middle Offset";
+            this.label17.Visible = false;
             // 
             // folderDirectory
             // 
@@ -561,7 +568,7 @@
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.originalSecondPartStart);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(393, 64);
+            this.panel1.Location = new System.Drawing.Point(393, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(468, 565);
             this.panel1.TabIndex = 58;
@@ -595,11 +602,72 @@
             this.label22.TabIndex = 61;
             this.label22.Text = "(leave empty for unchanged file)";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(603, 602);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(89, 13);
+            this.label23.TabIndex = 62;
+            this.label23.Text = "Entry Hex Length";
+            // 
+            // entryLength
+            // 
+            this.entryLength.AutoSize = true;
+            this.entryLength.Location = new System.Drawing.Point(704, 602);
+            this.entryLength.Name = "entryLength";
+            this.entryLength.Size = new System.Drawing.Size(58, 13);
+            this.entryLength.TabIndex = 63;
+            this.entryLength.Text = "-----------------";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(603, 632);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(73, 13);
+            this.label24.TabIndex = 59;
+            this.label24.Text = "Entries Added";
+            this.label24.Visible = false;
+            // 
+            // entriesAdded
+            // 
+            this.entriesAdded.Location = new System.Drawing.Point(693, 629);
+            this.entriesAdded.Name = "entriesAdded";
+            this.entriesAdded.Size = new System.Drawing.Size(121, 20);
+            this.entriesAdded.TabIndex = 58;
+            this.entriesAdded.Text = "0";
+            this.entriesAdded.Visible = false;
+            // 
+            // error5
+            // 
+            this.error5.AutoSize = true;
+            this.error5.Location = new System.Drawing.Point(608, 700);
+            this.error5.Name = "error5";
+            this.error5.Size = new System.Drawing.Size(34, 13);
+            this.error5.TabIndex = 64;
+            this.error5.Text = "error5";
+            // 
+            // error0
+            // 
+            this.error0.AutoSize = true;
+            this.error0.Location = new System.Drawing.Point(199, 582);
+            this.error0.Name = "error0";
+            this.error0.Size = new System.Drawing.Size(34, 13);
+            this.error0.TabIndex = 65;
+            this.error0.Text = "error0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 778);
+            this.Controls.Add(this.error0);
+            this.Controls.Add(this.error5);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.entriesAdded);
+            this.Controls.Add(this.entryLength);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel2);
@@ -696,6 +764,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label entryLength;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox entriesAdded;
+        private System.Windows.Forms.Label error5;
+        private System.Windows.Forms.Label error0;
     }
 }
 

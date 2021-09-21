@@ -29,6 +29,7 @@ namespace PointerAdjuster
         //private string modifiedPath = "";
 
         private string fileStart = "0";
+        private string entryTotal = "0";
 
         private string originalMiddleOffsetReadOnly = "";
         //private string originalMiddleOffset;
@@ -172,6 +173,9 @@ namespace PointerAdjuster
             label11.Text = "";
             label17.Text = "";
             errorLabel.Text = "";
+
+            error0.Text = "";
+            error5.Text = "";
 
             //this.originalPath.DragDrop += new
             //System.Windows.Forms.DragEventHandler(this.textBox3_DragDrop);
@@ -639,8 +643,22 @@ namespace PointerAdjuster
 
                 fs.Read(data, 0, toChangeLength);
 
+                int currentOffset = HexToInt("8");
+                for (int i = 0; i < 4; i++)
+                {
 
-                int currentOffset = 0;
+                    //todo change the value this reads to reflect new size
+                    entryTotal += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
+                    //originalMiddleOffset.Text += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
+                    //bottomStart += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
+
+                    //entryLength.Text = IntToHex((HexToInt(originalMiddleOffset.Text) - HexToInt(fileStart))/);
+
+                }
+
+
+
+                currentOffset = 0;
                 if (modifiedPath.Text.Contains(".bin")) { currentOffset = HexToInt("18"); }
                 else if (modifiedPath.Text.Contains(".mot")) { currentOffset = HexToInt("44"); }
                 else if (modifiedPath.Text.Contains(".snp")) { currentOffset = HexToInt("3C"); }
@@ -657,12 +675,15 @@ namespace PointerAdjuster
                 //fileStart = "3C";
 
                 originalMiddleOffset.Text = "";
+                //first pointer
                 for (int i = 0; i < 4; i++)
                 {
 
                     //todo change the value this reads to reflect new size
                     originalMiddleOffset.Text += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
                     //bottomStart += (IntToHex(data[currentOffset + 3 - i])).PadLeft(2, '0');
+
+                    entryLength.Text = IntToHex((HexToInt(originalMiddleOffset.Text) - HexToInt(fileStart))/HexToInt(entryTotal));
 
                 }
 
@@ -869,6 +890,11 @@ namespace PointerAdjuster
                 error4.Text = "Enter usable file, or modified offset";
             }
 
+            if (entriesAdded.Text == "")
+            {
+                error5.Text = "Enter number of entries added";
+              
+            }
 
             if (pointerCode.Text == "" && pointerCode2.Text == "")
             {
@@ -2883,6 +2909,7 @@ namespace PointerAdjuster
             originalMiddleOffset.Enabled = true;
             ClearErrors();
             label17.Text += "started...";
+            //if (modifiedPath.Text == "")
             filePath = modifiedPath.Text;
             //todo get rid of this stuff???
             if (isScriptCharacterFile.Checked)
