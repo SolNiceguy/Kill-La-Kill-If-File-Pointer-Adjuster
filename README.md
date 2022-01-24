@@ -9,6 +9,8 @@ Used for adding code to files that use pointers for the game Kill La Kill If. Au
 
 script_character file functionality has been disabled since it's still a bit buggy.   
 
+**NOTE:** The program assumes all new pointer code is in order, so if you're inserting code from different areas (ie non-continuous code), you'll have to do them one at a time or some of the new pointers will be off.
+
 
 ## Instructions
 1. Drag file to "File Path" window  
